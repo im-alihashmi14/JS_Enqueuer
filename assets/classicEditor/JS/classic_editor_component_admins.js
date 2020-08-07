@@ -1,7 +1,9 @@
 (function($){
-   
 
+    var postURL=classic_ajax.postURL;
     $(document).ready(()=>{
+        var postID=$("#post_ID").val();
+ 
         $('#jsEnqueuer_btn').click(()=>{
             $('#jsEnqueuerModal').modal('show');
         })
@@ -13,6 +15,8 @@
             var form_data = new FormData();                  
             form_data.append('file', file);
             form_data.append('name',file.name);
+            form_data.append('PostID',postID);
+            form_data.append('PostURL',postURL);
             form_data.append('action', 'storingFile');
             console.log(file.name);
             $.ajax(
